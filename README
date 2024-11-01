@@ -1,0 +1,7 @@
+# 编译指令:
+g++ lexer.cpp compiler.cpp main.cpp -o Tcompiler.exe
+# 运行指令:
+Tcompiler.exe <test语言源代码> <-o/-O 词法分析输出文件, 默认为 "test语言源代码.out">
+## e.g.
+Tcompiler.exe test.test
+Tcompiler.exe test.test -o test.out

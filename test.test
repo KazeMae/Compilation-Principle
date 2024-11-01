@@ -1,0 +1,21 @@
+// test.test -> Lexer test code
+{
+    int a;
+    int b1;
+    int c1c;
+    a = 0;
+    b = 1234 + 567;
+    c = (a + b);
+    if (a) {
+        write(b);
+    } else if(c) {
+        read(a);
+    }
+    else // test loop
+    {
+        while(a < b) b = 0;
+        for(int i = 1; i <= 100; i = i + 1)
+            a = b + i;
+    }
+    // ok;
+}
