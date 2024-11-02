@@ -15,7 +15,8 @@ namespace testCompiler {
 			KEYWORD,		// 关键字
 			OPERATOR,		// 运算符
 			DELIMITER,		// 分隔符
-			PROMPT			// 注释
+			PROMPT,			// 注释
+			UNKOWN			// 未知
 		};
 		
 		struct Word{

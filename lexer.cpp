@@ -9,7 +9,7 @@ namespace testCompiler {
 		// 进行词法分析
 		std::vector<Word> lexerRun(const std::string& sourceCode) {
 			source = sourceCode;
-			currentIndex = 0, lineCounter = 1, lineIndex = 0;
+			currentIndex = 0, lineCounter = 1, lineIndex = 1;
 			std::vector<Word> wordList = getWordList();
 			return wordList;
 		}
@@ -35,6 +35,9 @@ namespace testCompiler {
 			case WordType::PROMPT:
 				os<< "PROMPT\t\t";
 				break;
+			case WordType::UNKOWN:
+				os<< "UNKNOWN\t\t";
+				break;
 			default:
 				os<< "[ERROR]UNKNOWN\t";
 				break;
@@ -49,7 +52,7 @@ namespace testCompiler {
 		// 下一字符
 		char getChar() {
 			++ lineIndex;
-			if(peek() == '\n') ++ lineCounter, lineIndex = 0;
+			if(peek() == '\n') ++ lineCounter, lineIndex = 1;
 			return peek() == '\0' ? '\0' : source[currentIndex ++];
 		}
 		// 跳过空格字符
@@ -65,18 +68,20 @@ namespace testCompiler {
 		}
 		// 标识符和关键字
 		Word getIdentifierOrKeyword() {
+			Word word;
+			std::string identifier;
 			if (!std::isalpha(peek())) {
 				std::cerr<< "[ERROR LEXER] Identifier Or Keyword" 
 					<< "\trow:"<< lineCounter << "\tcol:" << lineIndex << "\t:" << currentIndex 
 					<< "\tThe word front is not alpha" << std::endl;
-				assert(std::isalpha(peek()));
+				identifier += getChar();
+				word.type = UNKOWN, word.value = identifier;
+				return word;
 			}
-			std::string identifier;
 			// 标识符
 			while(std::isalpha(peek()) || std::isdigit(peek())) {
 				identifier += getChar();
 			}
-			Word word;
 			// 是否为关键字
 			if(isKeyWord(identifier)){
 				word.type = KEYWORD;
@@ -90,6 +95,7 @@ namespace testCompiler {
 		// 数字
 		Word getNumber() {
 			std::string number;
+			Word word;
 			while(std::isdigit(peek())){
 				number += getChar();
 			}
@@ -97,11 +103,11 @@ namespace testCompiler {
 				std::cerr<< "[ERROR LEXER] Number" 
 				<< "\trow:"<< lineCounter << "\tcol:" << lineIndex << "\t:" << currentIndex 
 				<< "\tThe number front is 0 and The lenth is not 0" << std::endl;
-				assert(!((int)number.length() > 1 && number.front() == '0'));
+				word.type = UNKOWN, word.value = number;
+				return word;
+				// assert(!((int)number.length() > 1 && number.front() == '0'));
 			}
-			Word word;
-			word.type = NUMBER;
-			word.value = number;
+			word.type = NUMBER, word.value = number;
 			return word;
 		}
 		// 运算符, 分隔符和注释
@@ -160,7 +166,9 @@ namespace testCompiler {
 			std::cerr<< "[ERROR LEXER] Operator" 
 			<< "\trow:"<< lineCounter << "\tcol:" << lineIndex << "\t:" << currentIndex 
 			<< "\tThe operator front is illegal" << std::endl;
-			assert(false);
+			odp += getChar();
+			word.type = UNKOWN, word.value = odp;
+			// assert(false);
 			return word;
 		}
 		// 进行词法分析
@@ -168,6 +176,7 @@ namespace testCompiler {
 			std::vector<Word> words;
 			while(currentIndex < (int)source.length()){
 				skipSpace();
+				if(peek() == '\0') break;
 				if(std::isalpha(peek()))
 					words.push_back(getIdentifierOrKeyword());
 				else if(std::isdigit(peek()))
