@@ -25,6 +25,7 @@ namespace testCompiler {
 		};
 		std::ostream &operator<<(std::ostream &os, Word& x);
 
+		extern bool isOK;
 		extern std::string source;
 		extern std::vector<std::string> keyWord; 
 		extern int currentIndex, lineCounter, lineIndex;

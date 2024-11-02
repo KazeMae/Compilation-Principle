@@ -2,6 +2,7 @@
 
 namespace testCompiler {
 	namespace lexer{
+		bool isOK = true;
 		std::string source;
 		// keyNum = 7
 		std::vector<std::string> keyWord = {"else","for","if","int","read","while","write"}; 
@@ -74,6 +75,7 @@ namespace testCompiler {
 				std::cerr<< "[ERROR LEXER] Identifier Or Keyword" 
 					<< "\trow:"<< lineCounter << "\tcol:" << lineIndex << "\t:" << currentIndex 
 					<< "\tThe word front is not alpha" << std::endl;
+				isOK = false;
 				identifier += getChar();
 				word.type = UNKOWN, word.value = identifier;
 				return word;
@@ -101,8 +103,9 @@ namespace testCompiler {
 			}
 			if((int)number.length() > 1 && number.front() == '0') {
 				std::cerr<< "[ERROR LEXER] Number" 
-				<< "\trow:"<< lineCounter << "\tcol:" << lineIndex << "\t:" << currentIndex 
-				<< "\tThe number front is 0 and The lenth is not 0" << std::endl;
+					<< "\trow:"<< lineCounter << "\tcol:" << lineIndex << "\t:" << currentIndex 
+					<< "\tThe number front is 0 and The lenth is not 0" << std::endl;
+				isOK = false;
 				word.type = UNKOWN, word.value = number;
 				return word;
 				// assert(!((int)number.length() > 1 && number.front() == '0'));
@@ -164,8 +167,9 @@ namespace testCompiler {
 				return word;
 			}
 			std::cerr<< "[ERROR LEXER] Operator" 
-			<< "\trow:"<< lineCounter << "\tcol:" << lineIndex << "\t:" << currentIndex 
-			<< "\tThe operator front is illegal" << std::endl;
+				<< "\trow:"<< lineCounter << "\tcol:" << lineIndex << "\t:" << currentIndex 
+				<< "\tThe operator front is illegal" << std::endl;
+			isOK = false;
 			odp += getChar();
 			word.type = UNKOWN, word.value = odp;
 			// assert(false);

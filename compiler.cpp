@@ -28,7 +28,7 @@ namespace testCompiler {
 		// 读取源代码文件
 		fin.open(sourceCodePath, std::ios::in);
 		if(!fin.is_open()) {
-			std::cerr << "[ERROR RUN] cannot open source file!" << std::endl;
+			std::cerr << "[ERROR COMPILER] cannot open source file!" << std::endl;
 			assert(fin.is_open());
 		}
 		for(char c; (c = fin.get()) != EOF; sourceCode += c);
@@ -36,6 +36,9 @@ namespace testCompiler {
 
 		// 词法分析
 		auto wordList = lexer::lexerRun(sourceCode);
+		if(!lexer::isOK) {
+			std::cerr<< "[ERROR COMPILER] Lexer fail" << std::endl;
+		}
 		
 		//TODO
 
