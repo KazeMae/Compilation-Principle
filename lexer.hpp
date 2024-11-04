@@ -23,6 +23,8 @@ namespace testCompiler {
 		struct Word{
 			WordType type;
 			std::string value;
+			// 单词结束位置
+			int row, col;
 		};
 		std::ostream &operator<<(std::ostream &os, Word& x);
 

@@ -43,7 +43,7 @@ namespace testCompiler {
 				os<< "[ERROR]UNKNOWN\t";
 				break;
 			}
-			os<< "Value:\t" << x.value;
+			os<< "Value:\t" << x.value << "\trow:" << x.row << "\tcol:" << x.col;
 			return os;
 		}
 		// 当前字符
@@ -77,7 +77,7 @@ namespace testCompiler {
 					<< "\tThe word front is not alpha" << std::endl;
 				isOK = false;
 				identifier += getChar();
-				word.type = UNKOWN, word.value = identifier;
+				word.type = UNKOWN, word.value = identifier, word.row = lineCounter, word.col = lineIndex;
 				return word;
 			}
 			// 标识符
@@ -88,9 +88,11 @@ namespace testCompiler {
 			if(isKeyWord(identifier)){
 				word.type = KEYWORD;
 				word.value = identifier;
+				word.row = lineCounter, word.col = lineIndex;
 			} else {
 				word.type = IDENTIFIER;
 				word.value = identifier;
+				word.row = lineCounter, word.col = lineIndex;
 			}
 			return word;
 		}
@@ -107,10 +109,12 @@ namespace testCompiler {
 					<< "\tThe number front is 0 and The lenth is not 0" << std::endl;
 				isOK = false;
 				word.type = UNKOWN, word.value = number;
+				word.row = lineCounter, word.col = lineIndex;
 				return word;
 				// assert(!((int)number.length() > 1 && number.front() == '0'));
 			}
 			word.type = NUMBER, word.value = number;
+			word.row = lineCounter, word.col = lineIndex;
 			return word;
 		}
 		// 运算符, 分隔符和注释
@@ -122,6 +126,7 @@ namespace testCompiler {
 				odp += getChar();
 				word.type = DELIMITER;
 				word.value = odp;
+				word.row = lineCounter, word.col = lineIndex;
 				return word;
 			}
 			// 运算符 单符号 and 注释
@@ -134,10 +139,12 @@ namespace testCompiler {
 					}
 					word.type = PROMPT;
 					word.value = odp;
+					word.row = lineCounter, word.col = lineIndex;
 					return word;
 				}
 				word.type = OPERATOR;
 				word.value = odp;
+				word.row = lineCounter, word.col = lineIndex;
 				return word;
 			}
 			//除 and 注释
@@ -151,10 +158,12 @@ namespace testCompiler {
 					}
 					word.type = PROMPT;
 					word.value = odp;
+					word.row = lineCounter, word.col = lineIndex;
 					return word;
 				}
 				word.type = OPERATOR;
 				word.value = odp;
+				word.row = lineCounter, word.col = lineIndex;
 				return word;
 			}
 			// 比较运算 and 比较双运算符
@@ -164,6 +173,7 @@ namespace testCompiler {
 					odp += getChar();
 				word.type = OPERATOR;
 				word.value = odp;
+				word.row = lineCounter, word.col = lineIndex;
 				return word;
 			}
 			std::cerr<< "[ERROR LEXER] Operator" 
@@ -172,6 +182,7 @@ namespace testCompiler {
 			isOK = false;
 			odp += getChar();
 			word.type = UNKOWN, word.value = odp;
+			word.row = lineCounter, word.col = lineIndex;
 			// assert(false);
 			return word;
 		}
