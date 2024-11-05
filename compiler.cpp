@@ -40,7 +40,8 @@ namespace testCompiler {
 			std::cerr<< "[ERROR COMPILER] Lexer fail" << std::endl;
 		}
 		
-		//TODO
+		// 语法分析
+		auto 
 
 		// 输出结果
 		fout.open(outputPath, std::ios::out);

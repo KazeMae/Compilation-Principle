@@ -19,10 +19,15 @@ namespace testCompiler {
             STATEMENT_LIST,     // 语句序列
             STATEMENT,          // 语句内容
             IF_STAT,            // IF语句
+            EXPRESSION_STAT,    // 表达式序列
             EXPRESSION,         // 表达式
             BOOL_EXPRESSION,    // 布尔表达式
             ADD_EXPRESSION,     // 算数表达式
             TERM,               // 运算项
+            WHILE_STAT,         // while循环
+            FOR_STAT,           // for循环
+            READ_STAT,          // read语句
+            WRITE_STAT,         // write语句
         };
 
         struct SyntaxTree {
@@ -49,12 +54,22 @@ namespace testCompiler {
 
         extern SyntaxTree* root;
         
-        void parseRun(std::vector<lexer::Word>& _wordList);
+        SyntaxTree* parseRun(std::vector<lexer::Word>& _wordList);
         
         lexer::Word peek();
         lexer::Word getNextWord();
+        bool checkTerm(SyntaxTree* father);
+        bool checkExpression(SyntaxTree* father);
+        bool checkAddExpression(SyntaxTree* father);
         bool checkBoolExpression(SyntaxTree* father);
+        bool checkJudge(SyntaxTree* father);
         bool checkIfStat(SyntaxTree* father);
+        bool checkWhile(SyntaxTree* father);
+        bool checkFor(SyntaxTree* father);
+        bool checkRead(SyntaxTree* father);
+        bool checkWrite(SyntaxTree* father);
+        bool checkCompound(SyntaxTree* father);
+        bool checkExpressionStat(SyntaxTree* father);
         bool checkStatement(SyntaxTree* father);
         bool checkStatementList(SyntaxTree* father);
         bool checkDeclarationStat(SyntaxTree* father);
