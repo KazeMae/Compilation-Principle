@@ -17,8 +17,8 @@ namespace testCompiler {
             return p->addNode(type);
         }
 
-        SyntaxTree* addNode(SyntaxTree* p, SyntaxType type, lexer::Word wrod) {
-            return p->addNode(type, wrod);
+        SyntaxTree* addNode(SyntaxTree* p, SyntaxType type, lexer::Word word) {
+            return p->addNode(type, word);
         }
 
         lexer::Word peek() {
@@ -30,8 +30,89 @@ namespace testCompiler {
             return peek();
         }
 
-        bool checkStatementList(SyntaxTree* father) {
+        bool checkAddExpression(SyntaxTree* father) {
+            bool isSuccess = true;
+            lexer::Word nowWord = getNextWord();
+            SyntaxTree* current = addNode(father, ADD_EXPRESSION);
 
+            if(nowWord.type != lexer::WordType::DELIMITER) {
+                std::cerr<< "[ERROR PARSE] checkBoolExpression"
+                    << "\trow:" << nowWord.row << "\tcol:" << nowWord.col
+                    << "expected DELIMITER" << std::endl;
+                assert(nowWord.type == lexer::WordType::DELIMITER);
+                return false;
+            }
+            
+        }
+
+        bool checkBoolExpression(SyntaxTree* father) {
+            bool isSuccess = true;
+            lexer::Word nowWord = peek();
+            SyntaxTree* current = addNode(father, BOOL_EXPRESSION);
+
+            isSuccess = checkAddExpression(current);
+
+            addNode(current, Word, nowWord);
+            nowWord = getNextWord();
+            if(nowWord.type == lexer::WordType::OPERATOR) {
+                if(nowWord.value == "<") {
+
+                }else if(nowWord.value == ">") {
+
+                }
+            }
+        }
+
+        bool checkJudge(SyntaxTree* father) {
+            bool isSuccess = true;
+            lexer::Word nowWord = getNextWord();
+
+            if(nowWord.type != lexer::WordType::DELIMITER && nowWord.value != "(") {
+                std::cerr<< "[ERROR PARSE] checkJudge"
+                    << "\trow:" << nowWord.row << "\tcol:" << nowWord.col
+                    << "expected \')\'" << std::endl;
+                assert(nowWord.type == lexer::WordType::IDENTIFIER &&  nowWord.value == "(");
+                return false;
+            }
+            addNode(father, Word, nowWord);
+
+            isSuccess = checkExpression(father);
+
+
+
+        }
+
+        bool checkIfStat(SyntaxTree* father) {
+            bool isSuccess = true;
+            lexer::Word nowWord = peek();
+            SyntaxTree* current = addNode(father, IF_STAT);
+
+            isSuccess = checkJudge(current);
+
+        }
+
+        bool checkStatement(SyntaxTree* father) {
+            bool isSuccess = true;
+            lexer::Word nowWord = peek();
+            SyntaxTree* current = addNode(father, STATEMENT);
+
+            if(nowWord.type == lexer::WordType::KEYWORD) {
+                if(nowWord.value == "if") {
+                    isSuccess = checkIfStat(current);
+                }
+            }
+        }
+
+        bool checkStatementList(SyntaxTree* father) {
+            bool isSuccess = true;
+            lexer::Word nowWord = peek();
+            SyntaxTree* current = addNode(father, STATEMENT_LIST);
+
+            while(nowWord.type != lexer::WordType::DELIMITER || nowWord.value != "}") {
+                isSuccess = checkStatement(current);
+                if(!isSuccess) return isSuccess;
+                nowWord = peek();
+            }
         }
         
         bool checkDeclarationStat(SyntaxTree* father) {

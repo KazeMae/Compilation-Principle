@@ -14,8 +14,9 @@ namespace testCompiler {
 			std::vector<Word> wordList = getWordList();
 			return wordList;
 		}
+
 		// 格式化输出词法分析结果
-		std::ostream &operator<<(std::ostream &os, Word& x) {
+		std::ostream &operator<< (std::ostream &os, Word& x) {
 			os<< "Type:\t";
 			switch (x.type) {
 			case WordType::IDENTIFIER:

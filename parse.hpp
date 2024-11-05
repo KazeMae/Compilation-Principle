@@ -17,6 +17,12 @@ namespace testCompiler {
             DECLARATION_LIST,   // 声明序列
             DECLARATION_STAT,   // 声明内容
             STATEMENT_LIST,     // 语句序列
+            STATEMENT,          // 语句内容
+            IF_STAT,            // IF语句
+            EXPRESSION,         // 表达式
+            BOOL_EXPRESSION,    // 布尔表达式
+            ADD_EXPRESSION,     // 算数表达式
+            TERM,               // 运算项
         };
 
         struct SyntaxTree {
@@ -47,6 +53,9 @@ namespace testCompiler {
         
         lexer::Word peek();
         lexer::Word getNextWord();
+        bool checkBoolExpression(SyntaxTree* father);
+        bool checkIfStat(SyntaxTree* father);
+        bool checkStatement(SyntaxTree* father);
         bool checkStatementList(SyntaxTree* father);
         bool checkDeclarationStat(SyntaxTree* father);
         bool checkDeclarationList(SyntaxTree* father);
