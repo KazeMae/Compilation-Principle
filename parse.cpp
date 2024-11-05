@@ -30,18 +30,32 @@ namespace testCompiler {
             return peek();
         }
 
+        bool checkTerm(SyntaxTree* father) {
+            bool isSuccess = true;
+            lexer::Word nowWord = peek();
+            SyntaxTree* current = addNode(father, TERM);
+            addNode(current, Word, nowWord);
+            return isSuccess;
+        }
+
         bool checkAddExpression(SyntaxTree* father) {
             bool isSuccess = true;
             lexer::Word nowWord = getNextWord();
             SyntaxTree* current = addNode(father, ADD_EXPRESSION);
 
-            if(nowWord.type != lexer::WordType::DELIMITER) {
+            if(nowWord.type != lexer::WordType::DELIMITER && nowWord.type == lexer::WordType::NUMBER) {
                 std::cerr<< "[ERROR PARSE] checkBoolExpression"
                     << "\trow:" << nowWord.row << "\tcol:" << nowWord.col
-                    << "expected DELIMITER" << std::endl;
-                assert(nowWord.type == lexer::WordType::DELIMITER);
+                    << "expected DELIMITER or NUMBER" << std::endl;
+                assert(nowWord.type == lexer::WordType::DELIMITER || nowWord.type == lexer::WordType::NUMBER);
                 return false;
             }
+
+            isSuccess = checkTerm(current);
+
+            no
+
+
             
         }
 
@@ -76,7 +90,7 @@ namespace testCompiler {
             }
             addNode(father, Word, nowWord);
 
-            isSuccess = checkExpression(father);
+            isSuccess = checkBoolExpression(father);
 
 
 

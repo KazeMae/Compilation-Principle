@@ -102,29 +102,16 @@ namespace testCompiler {
 			std::string number;
 			Word word;
 			bool isS = true;
-			while(std::isdigit(peek()) || std::isalpha(peek())) {
-				if(std::isalpha(peek())) isS = false;
+			if(peek() == '0') {
+				number += peek();
+				getChar();
+				word.type = NUMBER, word.value = number;
+				word.row = lineCounter, word.col = lineIndex;
+				return word;
+			}
+			while(std::isdigit(peek())) 
 				number += getChar();
-			}
-			if(!isS) {
-				std::cerr<< "[ERROR LEXER] Number" 
-					<< "\trow:"<< lineCounter << "\tcol:" << lineIndex << "\t:" << currentIndex 
-					<< "\tThe number is not all digit" << std::endl;
-				isOK = false;
-				word.type = UNKOWN, word.value = number;
-				word.row = lineCounter, word.col = lineIndex;
-				return word;
-			}
-			if((int)number.length() > 1 && number.front() == '0') {
-				std::cerr<< "[ERROR LEXER] Number" 
-					<< "\trow:"<< lineCounter << "\tcol:" << lineIndex << "\t:" << currentIndex 
-					<< "\tThe number front is 0 and The lenth is not 0" << std::endl;
-				isOK = false;
-				word.type = UNKOWN, word.value = number;
-				word.row = lineCounter, word.col = lineIndex;
-				return word;
-				// assert(!((int)number.length() > 1 && number.front() == '0'));
-			}
+			
 			word.type = NUMBER, word.value = number;
 			word.row = lineCounter, word.col = lineIndex;
 			return word;
