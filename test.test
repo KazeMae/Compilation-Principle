@@ -1,12 +1,12 @@
 { 
-    //This a test program. 
-    int abc123$; 
-    int 123@; 
-    int 2a; 
-    abc = 012345; 
+    int abc123;
+    int a; 
+    abc = 12345; 
     for (i = 1;  i <= n; i = I + 1) 
     {  
         if(i != n)  
-        abc = ab c* i  else  abc = abc / i; 
+            abc = abc* i;
+        else
+            abc = abc / i; 
     } 
 } 
