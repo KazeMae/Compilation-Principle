@@ -7,23 +7,32 @@
 
 namespace testCompiler {
     namespace parse {
-        // 变量
-        struct Variable {
-            std::string name;
-            int address;
-            Variable(const std::string& _name, int a);
-        };
-        
-        extern std::vector<Variable> variableList;
-        extern int labelp;
         extern bool isOK;
-        // 语法分析
-        void program(std::vector<lexer::Word>& wordList);
-        // 定义变量
-        bool defVariable(const std::string& name);
-        // 获取变量地址
-        int getVariableAddress(const std::string& name);
+        extern int wordIndex;
+        extern std::vector<lexer::Word> wordList;
+        
+        enum SyntaxType{
+            PROGRAM,    //程序入口
+        };
 
+        struct SyntaxTree {
+            std::string data;
+            std::vector<SyntaxTree*> childNode;
+            bool addNode(const std::string& data) {
+                SyntaxTree* child = new SyntaxTree();
+                child->data = data;
+                childNode.push_back(child);
+                return true;
+            }
+        };
+        extern SyntaxTree* root;
+        
+        void parseRun(std::vector<lexer::Word>& _wordList);
+        
+        lexer::Word peek();
+        lexer::Word getNextWord();
+        void getDeclarationList();
+        void program();
     }
 }
 #endif
