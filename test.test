@@ -6,7 +6,9 @@
     {  
         if(i != n)  
             abc = abc* i;
-        else
+        else {
             abc = abc / i; 
+        }
     } 
+    while (1 == 1) {a = (a * b) + c;}
 } 

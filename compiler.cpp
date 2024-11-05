@@ -10,7 +10,9 @@ namespace testCompiler {
 		for (int i = 0; i < argc; ++ i) argList.push_back(argv[i]);
 		int state = 0;
 		for(auto i : argList) {
-			if(i == "-o" || i == "-O") 		state = 1;
+			if(i == "-o" || i == "-O") 	state = 1;
+			else if(i == "-l" || i == "-L") stateCompiler = 1;
+			else if(i == "-p" || i == "-P") stateCompiler = 2;
 			else if(state == 1) state = 0, outputPath = i;
 			else sourceCodePath = i;
 		}
@@ -40,8 +42,31 @@ namespace testCompiler {
 			std::cerr<< "[ERROR COMPILER] Lexer fail" << std::endl;
 		}
 		
+		if(stateCompiler < 2) {
+			fout.open(outputPath, std::ios::out);
+			if(!fout.is_open()) {
+				std::cerr << "[ERROR RUN] cannot open output file!" << std::endl;
+				assert(fout.is_open());
+			}
+			for(auto i : wordList) fout<< i <<std::endl;
+			return;
+		}
+
 		// 语法分析
-		auto 
+		auto syntaxTreeRoot = parse::parseRun(wordList);
+		if(!parse::isOK) {
+			std::cerr<< "[ERROR COMPILER] Parse fail" << std::endl;
+		}
+
+		if(stateCompiler < 3) {
+			fout.open(outputPath, std::ios::out);
+			if(!fout.is_open()) {
+				std::cerr << "[ERROR RUN] cannot open output file!" << std::endl;
+				assert(fout.is_open());
+			}
+			parse::outputSyntaxTree(fout, syntaxTreeRoot, 0);
+			return;
+		}
 
 		// 输出结果
 		fout.open(outputPath, std::ios::out);
@@ -49,8 +74,7 @@ namespace testCompiler {
 			std::cerr << "[ERROR RUN] cannot open output file!" << std::endl;
 			assert(fout.is_open());
 		}
-		for(auto i : wordList) {
-			fout<< i <<std::endl;
-		}
+		parse::outputSyntaxTree(fout, syntaxTreeRoot, 0);
+		
 	}
 }

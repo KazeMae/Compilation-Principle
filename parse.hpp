@@ -19,20 +19,21 @@ namespace testCompiler {
             STATEMENT_LIST,     // 语句序列
             STATEMENT,          // 语句内容
             IF_STAT,            // IF语句
-            EXPRESSION_STAT,    // 表达式序列
-            EXPRESSION,         // 表达式
+            ASSIGNMENT_EXPRESSION,  // 赋值表达式
             BOOL_EXPRESSION,    // 布尔表达式
-            ADD_EXPRESSION,     // 算数表达式
+            ARITHMETIC_EXPRESSION,     // 算数表达式
             TERM,               // 运算项
+            FACTOR,             // 因子
             WHILE_STAT,         // while循环
             FOR_STAT,           // for循环
             READ_STAT,          // read语句
             WRITE_STAT,         // write语句
+            COMPOUND_STAT       // 复合语句
         };
 
         struct SyntaxTree {
             SyntaxType type;
-            lexer::Word wrod;
+            lexer::Word word;
             std::vector<SyntaxTree*> childNode;
 
             SyntaxTree* addNode(SyntaxType type) {
@@ -42,34 +43,37 @@ namespace testCompiler {
                 return child;
             }
 
-            SyntaxTree* addNode(SyntaxType type, lexer::Word wrod) {
+            SyntaxTree* addNode(SyntaxType type, lexer::Word word) {
                 SyntaxTree* child = new SyntaxTree();
-                child->type = type, child->wrod = wrod;
+                child->type = type, child->word = word;
                 childNode.push_back(child);
                 return child;
             }
         };
+        std::ostream &operator<<(std::ostream &os, SyntaxTree& x);
         SyntaxTree* addNode(SyntaxTree* p, SyntaxType type);
-        SyntaxTree* addNode(SyntaxTree* p, SyntaxType type, lexer::Word wrod);
-
+        SyntaxTree* addNode(SyntaxTree* p, SyntaxType type, lexer::Word word);
         extern SyntaxTree* root;
+
+        void outputSyntaxTree(std::ostream& os, SyntaxTree* root, int deep);
         
         SyntaxTree* parseRun(std::vector<lexer::Word>& _wordList);
         
         lexer::Word peek();
         lexer::Word getNextWord();
         bool checkTerm(SyntaxTree* father);
-        bool checkExpression(SyntaxTree* father);
-        bool checkAddExpression(SyntaxTree* father);
+        // bool checkExpression(SyntaxTree* father);
+        bool checkAssignmentExpression(SyntaxTree* father);
+        bool checkArithmeticExpression(SyntaxTree* father);
         bool checkBoolExpression(SyntaxTree* father);
         bool checkJudge(SyntaxTree* father);
         bool checkIfStat(SyntaxTree* father);
-        bool checkWhile(SyntaxTree* father);
-        bool checkFor(SyntaxTree* father);
-        bool checkRead(SyntaxTree* father);
-        bool checkWrite(SyntaxTree* father);
-        bool checkCompound(SyntaxTree* father);
-        bool checkExpressionStat(SyntaxTree* father);
+        bool checkWhileStat(SyntaxTree* father);
+        bool checkForStat(SyntaxTree* father);
+        bool checkReadStat(SyntaxTree* father);
+        bool checkWriteStat(SyntaxTree* father);
+        bool checkCompoundStat(SyntaxTree* father);
+        // bool checkExpressionStat(SyntaxTree* father);
         bool checkStatement(SyntaxTree* father);
         bool checkStatementList(SyntaxTree* father);
         bool checkDeclarationStat(SyntaxTree* father);
