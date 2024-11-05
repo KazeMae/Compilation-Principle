@@ -100,8 +100,19 @@ namespace testCompiler {
 		Word getNumber() {
 			std::string number;
 			Word word;
-			while(std::isdigit(peek())){
+			bool isS = true;
+			while(std::isdigit(peek()) || std::isalpha(peek())) {
+				if(std::isalpha(peek())) isS = false;
 				number += getChar();
+			}
+			if(!isS) {
+				std::cerr<< "[ERROR LEXER] Number" 
+					<< "\trow:"<< lineCounter << "\tcol:" << lineIndex << "\t:" << currentIndex 
+					<< "\tThe number is not all digit" << std::endl;
+				isOK = false;
+				word.type = UNKOWN, word.value = number;
+				word.row = lineCounter, word.col = lineIndex;
+				return word;
 			}
 			if((int)number.length() > 1 && number.front() == '0') {
 				std::cerr<< "[ERROR LEXER] Number" 
