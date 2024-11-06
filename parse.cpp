@@ -507,7 +507,7 @@ namespace testCompiler {
         }
 
         bool checkStatementList(SyntaxTree* father) {
-            bool isSuccess = true, isEmpty = true;
+            bool isSuccess = true;
             lexer::Word nowWord = peek();
             SyntaxTree* current = addNode(father, STATEMENT_LIST);
 

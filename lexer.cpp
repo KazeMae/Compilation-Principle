@@ -101,7 +101,6 @@ namespace testCompiler {
 		Word getNumber() {
 			std::string number;
 			Word word;
-			bool isS = true;
 			if(peek() == '0') {
 				number += peek();
 				getChar();
