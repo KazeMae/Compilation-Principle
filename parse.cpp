@@ -38,6 +38,9 @@ namespace testCompiler {
             case IF_STAT:
                 os<< "IF_STAT";
                 break;
+            case ASSIGNMENT_STAT:
+                os<< "ASSIGNMENT_STAT";
+                break;
             case ASSIGNMENT_EXPRESSION:
                 os<< "ASSIGNMENT_EXPRESSION";
                 break;
@@ -144,6 +147,34 @@ namespace testCompiler {
                     nowWord = peek();
                 }else break;
             }
+            return isSuccess;
+        }
+
+        bool checkAssignmentStat(SyntaxTree* father) {
+            bool isSuccess = true;
+            lexer::Word nowWord = peek();
+            SyntaxTree* current = addNode(father, ASSIGNMENT_STAT);
+
+            if(nowWord.type != lexer::WordType::IDENTIFIER) {
+                std::cerr<< "[ERROR PARSE] checkAssignmentStat"
+                    << "\trow:" << nowWord.row << "\tcol:" << nowWord.col
+                    << "\texpected IDENTIFIER" << std::endl;
+                assert(nowWord.type == lexer::WordType::IDENTIFIER);
+                return isSuccess = false;
+            }
+
+            isSuccess = checkAssignmentExpression(current);
+            if(!isSuccess) return isSuccess;
+
+            nowWord = peek();
+            if(nowWord.type != lexer::WordType::DELIMITER || nowWord.value != ";") {
+                std::cerr<< "[ERROR PARSE] checkAssignmentStat"
+                    << "\trow:" << nowWord.row << "\tcol:" << nowWord.col
+                    << "\texpected \';\'" << std::endl;
+                assert(nowWord.type == lexer::WordType::DELIMITER && nowWord.value == ";");
+                return isSuccess = false;
+            }
+            // nowWord = getNextWord();
             return isSuccess;
         }
 
@@ -465,9 +496,11 @@ namespace testCompiler {
                 if(nowWord.value == "{") {
                     isSuccess = checkCompoundStat(current);
                     if(!isSuccess) return isSuccess;
+                }else if(nowWord.value == ";") {
+                    return isSuccess;
                 }
             }else if(nowWord.type == lexer::WordType::IDENTIFIER) {
-                isSuccess = checkAssignmentExpression(current);
+                isSuccess = checkAssignmentStat(current);
                 if(!isSuccess) return isSuccess;
             }
             return isSuccess;

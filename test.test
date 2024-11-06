@@ -1,14 +1,14 @@
 { 
     int abc123;
-    int a; 
+    int a = 123; 
     abc = 12345; 
-    for (i = 1;  i <= n; i = I + 1) 
+    for (i = 1;  i <= n; i = I + 1);
     {  
         if(i != n)  
             abc = abc* i;
         else {
             abc = abc / i; 
         }
-    } 
+    }
     while (1 == 1) {a = (a * b) + c;}
 } 

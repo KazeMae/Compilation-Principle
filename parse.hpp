@@ -19,6 +19,7 @@ namespace testCompiler {
             STATEMENT_LIST,     // 语句序列
             STATEMENT,          // 语句内容
             IF_STAT,            // IF语句
+            ASSIGNMENT_STAT,    // 赋值语句
             ASSIGNMENT_EXPRESSION,  // 赋值表达式
             BOOL_EXPRESSION,    // 布尔表达式
             ARITHMETIC_EXPRESSION,     // 算数表达式
@@ -62,7 +63,7 @@ namespace testCompiler {
         lexer::Word peek();
         lexer::Word getNextWord();
         bool checkTerm(SyntaxTree* father);
-        // bool checkExpression(SyntaxTree* father);
+        bool checkAssignmentStat(SyntaxTree* father);
         bool checkAssignmentExpression(SyntaxTree* father);
         bool checkArithmeticExpression(SyntaxTree* father);
         bool checkBoolExpression(SyntaxTree* father);
@@ -73,7 +74,6 @@ namespace testCompiler {
         bool checkReadStat(SyntaxTree* father);
         bool checkWriteStat(SyntaxTree* father);
         bool checkCompoundStat(SyntaxTree* father);
-        // bool checkExpressionStat(SyntaxTree* father);
         bool checkStatement(SyntaxTree* father);
         bool checkStatementList(SyntaxTree* father);
         bool checkDeclarationStat(SyntaxTree* father);
