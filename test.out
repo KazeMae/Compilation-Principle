@@ -1,148 +1,148 @@
 Type:	PROGRAM
-	|Type:	Word	Type:	DELIMITER	Value:	{	row:1	col:2
+	|Type:	Word	Type:	DELIMITER	Value:	{
 	|Type:	DECLARATION_LIST
 	|	|Type:	DECLARATION_STAT
-	|	|	|Type:	Word	Type:	KEYWORD		Value:	int	row:2	col:8
-	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	abc123	row:2	col:15
-	|	|	|Type:	Word	Type:	DELIMITER	Value:	;	row:2	col:16
+	|	|	|Type:	Word	Type:	KEYWORD		Value:	int
+	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	abc123
+	|	|	|Type:	Word	Type:	DELIMITER	Value:	;
 	|	|Type:	DECLARATION_STAT
-	|	|	|Type:	Word	Type:	KEYWORD		Value:	int	row:3	col:8
-	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	a	row:3	col:10
-	|	|	|Type:	Word	Type:	OPERATOR	Value:	=	row:3	col:12
-	|	|	|Type:	Word	Type:	NUMBER		Value:	123	row:3	col:16
-	|	|	|Type:	Word	Type:	DELIMITER	Value:	;	row:3	col:17
+	|	|	|Type:	Word	Type:	KEYWORD		Value:	int
+	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	a
+	|	|	|Type:	Word	Type:	OPERATOR	Value:	=
+	|	|	|Type:	Word	Type:	NUMBER		Value:	123
+	|	|	|Type:	Word	Type:	DELIMITER	Value:	;
 	|Type:	STATEMENT_LIST
 	|	|Type:	STATEMENT
 	|	|	|Type:	ASSIGNMENT_STAT
 	|	|	|	|Type:	ASSIGNMENT_EXPRESSION
-	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	abc	row:4	col:8
-	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	=	row:4	col:10
+	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	abc
+	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	=
 	|	|	|	|	|Type:	ARITHMETIC_EXPRESSION
 	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|Type:	Word	Type:	NUMBER		Value:	12345	row:4	col:16
+	|	|	|	|	|	|	|	|Type:	Word	Type:	NUMBER		Value:	12345
 	|	|Type:	STATEMENT
 	|	|	|Type:	FOR_STAT
-	|	|	|	|Type:	Word	Type:	KEYWORD		Value:	for	row:5	col:8
-	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	(	row:5	col:10
+	|	|	|	|Type:	Word	Type:	KEYWORD		Value:	for
+	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	(
 	|	|	|	|Type:	ASSIGNMENT_EXPRESSION
-	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	i	row:5	col:11
-	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	=	row:5	col:13
+	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	i
+	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	=
 	|	|	|	|	|Type:	ARITHMETIC_EXPRESSION
 	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|Type:	Word	Type:	NUMBER		Value:	1	row:5	col:15
+	|	|	|	|	|	|	|	|Type:	Word	Type:	NUMBER		Value:	1
 	|	|	|	|Type:	BOOL_EXPRESSION
 	|	|	|	|	|Type:	ARITHMETIC_EXPRESSION
 	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	i	row:5	col:19
-	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	<=	row:5	col:22
+	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	i
+	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	<=
 	|	|	|	|	|Type:	ARITHMETIC_EXPRESSION
 	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	n	row:5	col:24
+	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	n
 	|	|	|	|Type:	ASSIGNMENT_EXPRESSION
-	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	i	row:5	col:27
-	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	=	row:5	col:29
+	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	i
+	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	=
 	|	|	|	|	|Type:	ARITHMETIC_EXPRESSION
 	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	I	row:5	col:31
-	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	+	row:5	col:33
+	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	I
+	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	+
 	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|Type:	Word	Type:	NUMBER		Value:	1	row:5	col:35
-	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	)	row:5	col:36
+	|	|	|	|	|	|	|	|Type:	Word	Type:	NUMBER		Value:	1
+	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	)
 	|	|	|	|Type:	STATEMENT
 	|	|Type:	STATEMENT
 	|	|	|Type:	COMPOUND_STAT
-	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	{	row:6	col:6
+	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	{
 	|	|	|	|Type:	STATEMENT_LIST
 	|	|	|	|	|Type:	STATEMENT
 	|	|	|	|	|	|Type:	IF_STAT
-	|	|	|	|	|	|	|Type:	Word	Type:	KEYWORD		Value:	if	row:7	col:11
-	|	|	|	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	(	row:7	col:12
+	|	|	|	|	|	|	|Type:	Word	Type:	KEYWORD		Value:	if
+	|	|	|	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	(
 	|	|	|	|	|	|	|Type:	BOOL_EXPRESSION
 	|	|	|	|	|	|	|	|Type:	ARITHMETIC_EXPRESSION
 	|	|	|	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	i	row:7	col:13
-	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	!=	row:7	col:16
+	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	i
+	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	!=
 	|	|	|	|	|	|	|	|Type:	ARITHMETIC_EXPRESSION
 	|	|	|	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	n	row:7	col:18
-	|	|	|	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	)	row:7	col:19
+	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	n
+	|	|	|	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	)
 	|	|	|	|	|	|	|Type:	STATEMENT
 	|	|	|	|	|	|	|	|Type:	ASSIGNMENT_STAT
 	|	|	|	|	|	|	|	|	|Type:	ASSIGNMENT_EXPRESSION
-	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	abc	row:8	col:16
-	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	=	row:8	col:18
+	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	abc
+	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	=
 	|	|	|	|	|	|	|	|	|	|Type:	ARITHMETIC_EXPRESSION
 	|	|	|	|	|	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	abc	row:8	col:22
-	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	*	row:8	col:23
+	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	abc
+	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	*
 	|	|	|	|	|	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	i	row:8	col:25
-	|	|	|	|	|	|	|Type:	Word	Type:	KEYWORD		Value:	else	row:9	col:13
+	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	i
+	|	|	|	|	|	|	|Type:	Word	Type:	KEYWORD		Value:	else
 	|	|	|	|	|	|	|Type:	STATEMENT
 	|	|	|	|	|	|	|	|Type:	COMPOUND_STAT
-	|	|	|	|	|	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	{	row:9	col:15
+	|	|	|	|	|	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	{
 	|	|	|	|	|	|	|	|	|Type:	STATEMENT_LIST
 	|	|	|	|	|	|	|	|	|	|Type:	STATEMENT
 	|	|	|	|	|	|	|	|	|	|	|Type:	ASSIGNMENT_STAT
 	|	|	|	|	|	|	|	|	|	|	|	|Type:	ASSIGNMENT_EXPRESSION
-	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	abc	row:10	col:16
-	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	=	row:10	col:18
+	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	abc
+	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	=
 	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	ARITHMETIC_EXPRESSION
 	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	abc	row:10	col:22
-	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	/	row:10	col:24
+	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	abc
+	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	/
 	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	i	row:10	col:26
-	|	|	|	|	|	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	}	row:11	col:10
-	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	}	row:12	col:6
+	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	i
+	|	|	|	|	|	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	}
+	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	}
 	|	|Type:	STATEMENT
 	|	|	|Type:	WHILE_STAT
-	|	|	|	|Type:	Word	Type:	KEYWORD		Value:	while	row:13	col:10
-	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	(	row:13	col:12
+	|	|	|	|Type:	Word	Type:	KEYWORD		Value:	while
+	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	(
 	|	|	|	|Type:	BOOL_EXPRESSION
 	|	|	|	|	|Type:	ARITHMETIC_EXPRESSION
 	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|Type:	Word	Type:	NUMBER		Value:	1	row:13	col:13
-	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	==	row:13	col:16
+	|	|	|	|	|	|	|	|Type:	Word	Type:	NUMBER		Value:	1
+	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	==
 	|	|	|	|	|Type:	ARITHMETIC_EXPRESSION
 	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|Type:	Word	Type:	NUMBER		Value:	1	row:13	col:18
-	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	)	row:13	col:19
+	|	|	|	|	|	|	|	|Type:	Word	Type:	NUMBER		Value:	1
+	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	)
 	|	|	|	|Type:	STATEMENT
 	|	|	|	|	|Type:	COMPOUND_STAT
-	|	|	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	{	row:13	col:21
+	|	|	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	{
 	|	|	|	|	|	|Type:	STATEMENT_LIST
 	|	|	|	|	|	|	|Type:	STATEMENT
 	|	|	|	|	|	|	|	|Type:	ASSIGNMENT_STAT
 	|	|	|	|	|	|	|	|	|Type:	ASSIGNMENT_EXPRESSION
-	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	a	row:13	col:22
-	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	=	row:13	col:24
+	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	a
+	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	=
 	|	|	|	|	|	|	|	|	|	|Type:	ARITHMETIC_EXPRESSION
 	|	|	|	|	|	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	(	row:13	col:26
+	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	(
 	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	ARITHMETIC_EXPRESSION
 	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	a	row:13	col:27
-	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	*	row:13	col:29
+	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	a
+	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	*
 	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	b	row:13	col:31
-	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	+	row:13	col:34
+	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	b
+	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	OPERATOR	Value:	+
 	|	|	|	|	|	|	|	|	|	|	|Type:	TERM
 	|	|	|	|	|	|	|	|	|	|	|	|Type:	FACTOR
-	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	c	row:13	col:36
-	|	|	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	}	row:13	col:38
-	|Type:	Word	Type:	DELIMITER	Value:	}	row:14	col:2
+	|	|	|	|	|	|	|	|	|	|	|	|	|Type:	Word	Type:	IDENTIFIER	Value:	c
+	|	|	|	|	|	|Type:	Word	Type:	DELIMITER	Value:	}
+	|Type:	Word	Type:	DELIMITER	Value:	}

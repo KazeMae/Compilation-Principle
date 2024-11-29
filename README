@@ -1,8 +1,15 @@
 # 编译指令:
+## 直接编译
+```bash
 g++ lexer.cpp parse.cpp compiler.cpp main.cpp -o Tcompiler.exe
+```
+## makefile
+```bash
+make
+```
 # 运行指令:
-Tcompiler.exe <test语言源代码> <-o/-O 词法分析输出文件, 默认为 "test语言源代码.out"> [-l/-L 输出词法分析 / -p/-P 输出语法分析] 
+Tcompiler.exe <test语言源代码文件> <-o/-O 词法分析输出文件, 默认为 "test语言源代码文件名.out"> [-l/-L 输出词法分析 / -p/-P 输出语法分析] 
 ## e.g.
 ./Tcompiler.exe test.test
-./Tcompiler.exe test.test -o test.out -l
-./Tcompiler.exe test.test -o test.out -p
+./Tcompiler.exe test.test -o test.out -l # 词法分析
+./Tcompiler.exe test.test -o test.out -p # 语法分析

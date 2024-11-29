@@ -18,7 +18,35 @@ namespace testCompiler {
             os<< "Type:\t";
 			switch (x.type) {
             case Word:
-                os<< "Word\t" << x.word;
+                os<< "Word\t";
+                os<< "Type:\t";
+                switch (x.word.type) {
+                case lexer::WordType::IDENTIFIER:
+                    os<< "IDENTIFIER\t";
+                    break;
+                case lexer::WordType::NUMBER:
+                    os<< "NUMBER\t\t";
+                    break;
+                case lexer::WordType::KEYWORD:
+                    os<< "KEYWORD\t\t";
+                    break;
+                case lexer::WordType::OPERATOR:
+                    os<< "OPERATOR\t";
+                    break;
+                case lexer::WordType::DELIMITER:
+                    os<< "DELIMITER\t";
+                    break;
+                case lexer::WordType::PROMPT:
+                    os<< "PROMPT\t\t";
+                    break;
+                case lexer::WordType::UNKOWN:
+                    os<< "UNKNOWN\t\t";
+                    break;
+                default:
+                    os<< "[ERROR]UNKNOWN\t";
+                    break;
+                }
+                os<< "Value:\t" << x.word.value;
                 break;
             case PROGRAM:
                 os<< "PROGRAM";
@@ -462,7 +490,7 @@ namespace testCompiler {
                 std::cerr<< "[ERROT PARSE] program"
                     << "\trow:" << nowWord.row << "\tcol:" << nowWord.col
                     << "\texpected \'}\'" << std::endl;
-                assert(nowWord.type != lexer::WordType::DELIMITER && nowWord.value != "}");
+                assert(nowWord.type == lexer::WordType::DELIMITER && nowWord.value == "}");
                 return isSuccess = false;
             }
             addNode(current, Word, nowWord);
@@ -586,7 +614,7 @@ namespace testCompiler {
                 std::cerr<< "[ERROT PARSE] program"
                     << "\trow:" << nowWord.row << "\tcol:" << nowWord.col
                     << "\texpected \'{\'" << std::endl;
-                assert(nowWord.type != lexer::WordType::DELIMITER && nowWord.value != "{");
+                assert(nowWord.type == lexer::WordType::DELIMITER && nowWord.value == "{");
                 return isSuccess = false;
             }
             addNode(root, Word, nowWord);
@@ -603,7 +631,7 @@ namespace testCompiler {
                 std::cerr<< "[ERROT PARSE] program"
                     << "\trow:" << nowWord.row << "\tcol:" << nowWord.col
                     << "\texpected \'}\'" << std::endl;
-                assert(nowWord.type != lexer::WordType::DELIMITER && nowWord.value != "}");
+                assert(nowWord.type == lexer::WordType::DELIMITER && nowWord.value == "}");
                 return isSuccess = false;
             }
             addNode(root, Word, nowWord);
