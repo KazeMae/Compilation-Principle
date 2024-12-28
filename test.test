@@ -6,6 +6,7 @@
     {  
         if(i != n)  
             abc = abc* i;
+    // loop
         else {
             abc = abc / i; 
         }

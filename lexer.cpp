@@ -196,6 +196,7 @@ namespace testCompiler {
 					words.push_back(getNumber());
 				else 
 					words.push_back(getOperatorOrDelimiterOrPrompt());
+				if(!words.empty() && words.back().type == PROMPT) words.pop_back();
 			}
 			return words;
 		}
