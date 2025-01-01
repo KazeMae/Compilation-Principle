@@ -13,6 +13,7 @@ namespace testCompiler {
 			if(i == "-o" || i == "-O") 	state = 1;
 			else if(i == "-l" || i == "-L") stateCompiler = 1;
 			else if(i == "-p" || i == "-P") stateCompiler = 2;
+			else if(i == "-s" || i == "-S") stateCompiler = 3;
 			else if(state == 1) state = 0, outputPath = i;
 			else sourceCodePath = i;
 		}
@@ -56,6 +57,7 @@ namespace testCompiler {
 		auto syntaxTreeRoot = parse::parseRun(wordList);
 		if(!parse::isOK) {
 			std::cerr<< "[ERROR COMPILER] Parse fail" << std::endl;
+			assert(parse::isOK);
 		}
 
 		if(stateCompiler < 3) {
@@ -68,13 +70,19 @@ namespace testCompiler {
 			return;
 		}
 
+		// 语义分析
+		auto middleCode = semantic::semanticRun(syntaxTreeRoot);
+		if(!semantic::isOK) {
+			std::cerr<< "[ERROR COMPILER] Semantic fail" << std::endl;
+			assert(parse::isOK);
+		}
+
 		// 输出结果
 		fout.open(outputPath, std::ios::out);
 		if(!fout.is_open()) {
 			std::cerr << "[ERROR RUN] cannot open output file!" << std::endl;
 			assert(fout.is_open());
 		}
-		parse::outputSyntaxTree(fout, syntaxTreeRoot, 0);
-		
+		fout<< middleCode;
 	}
 }

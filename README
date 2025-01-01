@@ -1,7 +1,7 @@
 # 编译指令:
 ## 直接编译
 ```bash
-g++ lexer.cpp parse.cpp compiler.cpp main.cpp -o Tcompiler.exe
+g++ lexer.cpp parse.cpp semantic.cpp compiler.cpp main.cpp -o Tcompiler.exe
 ```
 ## makefile
 ```bash
@@ -13,3 +13,4 @@ Tcompiler.exe <test语言源代码文件> <-o/-O 词法分析输出文件, 默�
 ./Tcompiler.exe test.test
 ./Tcompiler.exe test.test -o test.out -l # 词法分析
 ./Tcompiler.exe test.test -o test.out -p # 语法分析
+./Tcompiler.exe test.test -o test.out -s # 语义分析

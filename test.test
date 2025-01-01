@@ -1,15 +1,5 @@
 { 
-    int abc123;
-    int a = 123; 
-    abc = 12345; 
-    for (i = 1;  i <= n; i = I + 1);
-    {  
-        if(i != n)  
-            abc = abc* i;
-    // loop
-        else {
-            abc = abc / i; 
-        }
-    }
-    while (1 == 1) {a = (a * b) + c;}
+    int i;
+    for(i = 0; i < 3; i = i + 1) 
+        write i;
 } 

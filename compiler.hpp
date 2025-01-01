@@ -8,6 +8,7 @@
 #include <cassert>
 #include "lexer.hpp"
 #include "parse.hpp"
+#include "semantic.hpp"
 
 namespace testCompiler {
 	extern std::string sourceCodePath;
