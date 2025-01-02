@@ -10,5 +10,5 @@ LABEL	3
 	BR	0
 LABEL	2
 	OUT
-	BRlab4	3
+	BR	3
 LABEL	1

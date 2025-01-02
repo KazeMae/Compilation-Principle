@@ -537,7 +537,9 @@ namespace testCompiler {
         }
 
         bool term(parse::SyntaxTree* p) {
+
             for(auto &i : (p->childNode)) {
+                parse::outputSyntaxTree(std::cerr, root, 0);
                 switch (i->type) {
                     case parse::TERM:
                         if(!term(i)) return isOK = false;
@@ -557,8 +559,7 @@ namespace testCompiler {
                                 assert(false);
                                 return isOK = false;
                             }
-                        }else if(i->word.type == lexer::NUMBER || i->word.type == lexer::IDENTIFIER);
-                        else {
+                        }else {
                             std::cerr<< "[ERROR SEMANTIC] Term OPERATOR type error " << std::endl;
                             parse::outputSyntaxTree(std::cout, p, 0);
                             parse::outputSyntaxTree(std::cout, i, 0);
