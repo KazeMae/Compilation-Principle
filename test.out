@@ -12,3 +12,4 @@ LABEL	2
 	OUT
 	BR	3
 LABEL	1
+test
